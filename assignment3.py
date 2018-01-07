@@ -41,6 +41,7 @@ p2 = buildPyramid(template)
 height, width = p1[3].shape
 correlations = np.zeros((height, width))
 disparities = np.zeros((height, width))
+depth = np.zeros((height, width))
 for l in range(n, height-n):
     des = getDescriptors(p1[3], l, n)
     des2 = getDescriptors(p2[3], l, n)
@@ -56,13 +57,13 @@ for l in range(n, height-n):
             row_corrs.append(result)
             if(result < smallest_corr):
                 smallest_corr = result
-                disparities[l, column] = index2 - index
+                disparities[l, column] = (index2 - index)
+                depth[l, column] = (index2 - index) *  (1.0 / 16.0)
+        # print(min(row_corrs))
         correlations[l, column] = min(row_corrs)
         column += 1
-    print(disparities[l])
 
-
-cv2.imshow('test', disparities)
+cv2.imshow('test', depth)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
