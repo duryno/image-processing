@@ -19,7 +19,6 @@ def getDescriptors(img, y, n):
                 for j in range(int(y)-(n//2), int(y)+(n//2)+1):
                     nd.append(img[j,i])
             descriptors.append(nd)
-            # print(descriptors)
         except IndexError :
             print(str(x))
             print("index error")
@@ -29,7 +28,7 @@ def getDescriptors(img, y, n):
 def buildPyramid(img):
     pyramide = []
     pyramide.append(img)
-    for i in range(0,3):
+    for i in range(1,4):
         low_res = cv2.pyrDown(pyramide[i-1])
         pyramide.append(low_res)
     return pyramide
@@ -97,9 +96,9 @@ for l in range(n, height-n):
         column += 1
 
 cv2.imshow('test3', depth)
-cv2.imwrite('test3.png', depth)
-misc.imsave('test31.jpg', depth)
-
+pic = depth * 255
+pic = pic.astype('uint8')
+cv2.imwrite('test3.png', pic)
 
 height, width = p1[2].shape
 correlations = np.zeros((height, width))
@@ -136,6 +135,9 @@ for l in range(n, height-n):
         column += 1
 
 cv2.imshow('test2', depth)
+pic = depth * 255
+pic = pic.astype('uint8')
+cv2.imwrite('test2.png', pic)
 
 height, width = p1[1].shape
 correlations = np.zeros((height, width))
@@ -172,6 +174,9 @@ for l in range(n, height-n):
         column += 1
 
 cv2.imshow('test1', depth)
+pic = depth * 255
+pic = pic.astype('uint8')
+cv2.imwrite('test1.png', pic)
 
 height, width = p1[0].shape
 correlations = np.zeros((height, width))
@@ -209,6 +214,9 @@ for l in range(n, height-n):
         column += 1
 
 cv2.imshow('test', depth)
+pic = depth * 255
+pic = pic.astype('uint8')
+cv2.imwrite('test.png', pic)
 
 cv2.waitKey(0)
 cv2.destroyAllWindows()
