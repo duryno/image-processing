@@ -3,7 +3,7 @@
 ![alt text](images/test-tsuka11-18-2.png)
 
 ### Venus
-![alt text](images/venus11-18.png)
+![alt text](images/venus11-18.PNG)
 
 ### Map
-![alt text](images/map11-18.png)
+![alt text](images/map11-18.PNG)
